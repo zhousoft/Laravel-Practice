@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin.login'], function(){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web','admin.login']], function(){
     Route::get('/', ['uses' => 'IndexController@index']);
-    Route::get('login/profile','IndexController@login')->name('profile');
+   // Route::get('login/profile','IndexController@login')->name('profile');
+});
+
+Route::group(['middleware'=>['web']], function(){
+    Route::get('admin/login','Admin\IndexController@login');
 });

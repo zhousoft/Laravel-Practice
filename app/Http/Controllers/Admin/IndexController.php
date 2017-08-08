@@ -12,7 +12,7 @@ class IndexController extends Controller
     }
     public function login()
     {
-        echo route('profile');
+        session(['admin'=>1]);
         return "login";
     }
 }
