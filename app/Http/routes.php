@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/view', function () {
+//     return view('my_laravel');
+// });
+Route::get('view','ViewController@index');
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web','admin.login']], function(){
     Route::get('/', ['uses' => 'IndexController@index']);
    // Route::get('login/profile','IndexController@login')->name('profile');
