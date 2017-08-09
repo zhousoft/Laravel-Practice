@@ -20,4 +20,9 @@ class ViewController extends Controller
         //return view('my_laravel', $data);
         return view('my_laravel',compact('data','title','str'));
     }
+
+    public function view()
+    {
+        return view('index');
+    }
 }

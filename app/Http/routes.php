@@ -20,6 +20,8 @@ Route::get('/', function () {
 // });
 Route::get('view','ViewController@index');
 
+Route::get('view','ViewController@view');
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web','admin.login']], function(){
     Route::get('/', ['uses' => 'IndexController@index']);
    // Route::get('login/profile','IndexController@login')->name('profile');
