@@ -12,7 +12,7 @@ class ViewController extends Controller
     {
 
         $data = [
-            'name' =>'学习',
+            'name' =>'学习a',
             'value' => "laravel"
         ];
         $title = 'laravel 5.2';

@@ -38,8 +38,9 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title"><?php echo $data['name'];?>-<?php echo $data['value'];?></div>
-                <h2><?php echo $title?></h2>
+                <div class="title">{{$data['name']}}-{{$data['value']}}</div>
+                <h2>{{isset($title)?$title:"没有文章"}}</h2>
+                
             </div>
         </div>
     </body>

@@ -8,6 +8,7 @@ class IndexController extends Controller
 {
     public function index()
     {
+	session(['admin'=>null]);
         return "index";
     }
     public function login()
