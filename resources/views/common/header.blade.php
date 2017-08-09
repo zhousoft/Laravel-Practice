@@ -1,0 +1,1 @@
+<div class="header"> 公共头部 当前页面 {{$page or '找不到页面'}}</div>

@@ -25,4 +25,14 @@ class ViewController extends Controller
     {
         return view('index');
     }
+
+    public function article()
+    {
+        return view('article');
+    }
+
+    public function layouts()
+    {
+        return view('layouts');
+    }
 }

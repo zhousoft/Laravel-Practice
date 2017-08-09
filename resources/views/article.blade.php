@@ -19,8 +19,8 @@
 	</style>
 </head>
 <body>
-	@include('common.header',['page'=>'主页'])
-	<div class="middle">中间内容</div>
+	@include('common.header',['page'=>'文章页面'])
+	<div class="middle">1文章中间内容</div>
 	@include('common.footer')
 
 </body>

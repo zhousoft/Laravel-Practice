@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +20,8 @@
 	</style>
 </head>
 <body>
-	@include('common.header',['page'=>'主页'])
+	<div class ="header"> 公共头部 当前页面 ly</div>	
 	<div class="middle">中间内容</div>
-	@include('common.footer')
-
+	<div class ="footer">公共底部</div>
 </body>
 </html>
