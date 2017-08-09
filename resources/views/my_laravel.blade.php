@@ -34,13 +34,17 @@
                 font-size: 96px;
             }
         </style>
-    </head>
+       </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">{{$data['name']}}-{{$data['value']}}</div>
+               {{--  <div class="title">{{$data['name']}}-{{$data['value']}}</div>
                 <h2>{{isset($title)?$title:"没有文章"}}</h2>
-                
+                {!!$str!!}
+ --}}
+            @for ($i = 0; $i <10 ; $i++)
+                {{$i}}<br>
+            @endfor
             </div>
         </div>
     </body>
