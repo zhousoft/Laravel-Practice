@@ -10,9 +10,9 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $pdo = DB::connection()->getPdo();
-        dd($pdo);
-        echo phpinfo();
-        echo 'index';
+        // $pdo = DB::connection()->getPdo();
+        // dd($pdo);
+        $users = DB::table('user')->get();
+        dd($users);
     }
 }
