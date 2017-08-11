@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+ Route::get('/', 'IndexController@index');
+// Route::get('/', function(){
+//     echo phpinfo();
+// });
 // Route::get('/view', function () {
 //     return view('my_laravel');
 // });
