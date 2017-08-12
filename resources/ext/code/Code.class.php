@@ -34,6 +34,7 @@ class Code{
 			$this->font = __DIR__.'/consola.ttf';
 		}
 		$this->create();//生成验证码
+		//ob_clean();
 		header("Content-type:image/png");
 		imagepng($this->img);
 		imagedestroy($this->img);
