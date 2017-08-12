@@ -35,6 +35,9 @@ Route::get('layouts', 'ViewController@layouts');
 //    // Route::get('login/profile','IndexController@login')->name('profile');
 // });
 
+
+
 Route::group(['middleware'=>['web']], function(){
     Route::get('admin/login','Admin\LoginController@login');
+    Route::get('admin/code','Admin\LoginController@code');
 });
