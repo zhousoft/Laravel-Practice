@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request; 
-class IndexController extends Controller
+class IndexController extends CommonController
 {
     public function index()
     {
-	session(['admin'=>null]);
-        return "index";
+        return view('admin.index');
     }
-    public function login()
+
+    public function info()
     {
-        session(['admin'=>1]);
-        return "login";
+    	return view('admin.info');
     }
 }

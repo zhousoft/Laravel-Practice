@@ -40,5 +40,6 @@ Route::get('layouts', 'ViewController@layouts');
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin'],function(){
     Route::any('login','LoginController@login');
     Route::get('code','LoginController@code');
-    Route::any('crypt','LoginController@crypt');
+    Route::any('index','IndexController@index');
+    Route::any('info','IndexController@info');
 });
