@@ -37,8 +37,8 @@ Route::get('layouts', 'ViewController@layouts');
 
 
 
-Route::group(['middleware'=>['web']], function(){
-    Route::any('admin/login','Admin\LoginController@login');
-    Route::get('admin/code','Admin\LoginController@code');
-   
+Route::group(['prefix'=>'admin', 'namespace'=>'Admin'],function(){
+    Route::any('login','LoginController@login');
+    Route::get('code','LoginController@code');
+    Route::any('crypt','LoginController@crypt');
 });
