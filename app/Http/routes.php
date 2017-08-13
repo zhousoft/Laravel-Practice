@@ -30,7 +30,7 @@ Route::get('article', 'ViewController@article');
 Route::get('layouts', 'ViewController@layouts');
 
 // Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web','admin.login']], function(){
-// 	Route::get('login','IndexController@login');
+//  Route::get('login','IndexController@login');
 //     Route::get('/', ['uses' => 'IndexController@index']);
 //    // Route::get('login/profile','IndexController@login')->name('profile');
 // });
@@ -38,7 +38,7 @@ Route::get('layouts', 'ViewController@layouts');
 
 
 Route::group(['middleware'=>['web']], function(){
-    Route::get('admin/login','Admin\LoginController@login');
+    Route::any('admin/login','Admin\LoginController@login');
     Route::get('admin/code','Admin\LoginController@code');
-    Route::get('admin/getcode','Admin\LoginController@getcode');
+   
 });
