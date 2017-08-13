@@ -14,10 +14,10 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-// Route::get('/', 'IndexController@index');
-Route::get('/', function(){
-    echo phpinfo();
-});
+Route::get('/', 'IndexController@index');
+// Route::get('/', function(){
+//     echo phpinfo();
+// });
 // Route::get('/view', function () {
 //     return view('my_laravel');
 // });
@@ -40,4 +40,5 @@ Route::get('layouts', 'ViewController@layouts');
 Route::group(['middleware'=>['web']], function(){
     Route::get('admin/login','Admin\LoginController@login');
     Route::get('admin/code','Admin\LoginController@code');
+    Route::get('admin/getcode','Admin\LoginController@getcode');
 });

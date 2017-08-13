@@ -21,4 +21,9 @@ class LoginController extends CommonController
     	$code->make();
     	echo 1234;
     }
+    public function getcode()
+    {
+    	$code = new \Code;
+    	echo $code->get();
+    }
 }

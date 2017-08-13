@@ -34,7 +34,7 @@ class Code{
 			$this->font = __DIR__.'/consola.ttf';
 		}
 		$this->create();//生成验证码
-		//ob_clean();
+		ob_clean();//http请求发送头之前不能输出任何东西，为了避免其他地方误输出，清空输出缓存
 		header("Content-type:image/png");
 		imagepng($this->img);
 		imagedestroy($this->img);
@@ -142,7 +142,7 @@ class Code{
 
 	//画矩形边框
 	private function createRec() {
-		//imagerectangle($this->img, 0, 0, $this->width - 1, $this->height - 1, $this->fontColor);
+		imagerectangle($this->img, 0, 0, $this->width - 1, $this->height - 1, $this->fontColor);
 	}
 
 	//写入验证码文字
