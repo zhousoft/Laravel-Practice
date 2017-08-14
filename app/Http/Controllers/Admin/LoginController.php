@@ -24,7 +24,8 @@ class LoginController extends CommonController
             if ($user->user_name != $input['user_name'] || Crypt::decrypt($user->user_pass) != $input['user_pass']) {
                 return back()->with('msg','用户名或密码错误！');
             }
-            echo '登录成功';
+            //登录成功
+            return redirect('admin/index');
         } else {
             
             return view('admin.login');
