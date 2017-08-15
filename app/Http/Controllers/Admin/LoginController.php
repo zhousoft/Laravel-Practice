@@ -25,14 +25,21 @@ class LoginController extends CommonController
                 return back()->with('msg','用户名或密码错误！');
             }
             //登录成功
+            session(['user' => $user]);
             return redirect('admin/index');
         } else {
-            
+            session(['user'=>null]);
             return view('admin.login');
         }
         
         
     }
+    public function quit()
+    {
+        session(['user'=>null]);
+        return redirect('admin/login');
+    }
+    //获取验证码
     public function code()
     {
         //echo 1234;

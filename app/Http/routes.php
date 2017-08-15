@@ -40,6 +40,10 @@ Route::get('layouts', 'ViewController@layouts');
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin'],function(){
     Route::any('login','LoginController@login');
     Route::get('code','LoginController@code');
+    Route::get('quit','LoginController@quit');
+});
+
+Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['admin.login']],function(){
     Route::any('index','IndexController@index');
     Route::any('info','IndexController@info');
 });
