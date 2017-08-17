@@ -13,9 +13,14 @@
         <h3>修改密码</h3>
         @if (count($errors)>0)
         <div class="mark"> 
-            @foreach ($errors->all() as $error)
+            @if (is_object($errors))
+                @foreach ($errors->all() as $error)
                <p> {{ $error }}</br></p>    
-            @endforeach
+                @endforeach
+            @else
+                <p> {{ $errors }}</p>
+            @endif
+            
         </div>
           @endif
     </div>
