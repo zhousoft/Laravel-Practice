@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Category;
@@ -55,6 +55,21 @@ class CategoryController extends CommonController
 
     public function changeOrder()
     {
-        echo 12345;
+        $input = Input::all();
+        $cate = Category::find($input['cate_id']);
+        $cate->cate_order = $input['cate_order'];
+        $ret = $cate->update();
+        if ($ret) {
+            $data = [
+                'status' => 0,
+                'msg' => '分类排序更新成功'
+            ];
+        }else{
+            $date = [
+                'status' => '1',
+                'msg' => '分类排序更新失败'
+            ];
+        }
+        return $data;
     }
 }
