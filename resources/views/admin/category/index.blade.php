@@ -58,7 +58,7 @@
                     
                     <tr>
                         <td class="tc">
-                            <input type="text" name="ord[]" value="{{ $v->cate_order }}">
+                            <input type="text" onchange="changeOrder()" value="{{ $v->cate_order }}">
                         </td>
                         <td class="tc">{{ $v->cate_id }}</td>
                         <td>
@@ -108,6 +108,14 @@
         </div>
     </form>
     <!--搜索结果页面 列表 结束-->
+
+<script type="text/javascript">
+    function changeOrder(){
+       $.post("{{ url('admin/cate/changeorder') }}",{'_token':'{{ csrf_token() }}'},function(data){
+
+       }) 
+    }
+</script>
 @endsection
    
 

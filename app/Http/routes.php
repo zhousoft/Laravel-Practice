@@ -21,13 +21,13 @@ Route::get('/', 'IndexController@index');
 // Route::get('/view', function () {
 //     return view('my_laravel');
 // });
-// Route::get('view','ViewController@index');
+Route::get('view','ViewController@index');
 
-// Route::get('view','ViewController@view');
+Route::get('view','ViewController@view');
 
-// Route::get('article', 'ViewController@article');
+Route::get('article', 'ViewController@article');
 
-// Route::get('layouts', 'ViewController@layouts');
+Route::get('layouts', 'ViewController@layouts');
 
 // Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web','admin.login']], function(){
 //  Route::get('login','IndexController@login');
@@ -47,6 +47,8 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['admin.log
     Route::get('info','IndexController@info');
     Route::get('quit','LoginController@quit');
     Route::any('pass','IndexController@pass');
+
+    Route::post('cate/changeorder','CategoryController@changeOrder');
 
     Route::resource('category', 'CategoryController');
 });

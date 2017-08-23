@@ -52,4 +52,9 @@ class CategoryController extends CommonController
     {
 
     }
+
+    public function changeOrder()
+    {
+        echo 12345;
+    }
 }
