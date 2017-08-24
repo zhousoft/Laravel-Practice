@@ -112,7 +112,8 @@
 <script type="text/javascript">
     function changeOrder(obj, cate_id){
         var cate_order = $(obj).val();
-       $.post("{{ url('admin/cate/changeorder') }}",{'_token':'{{ csrf_token() }}','cate_id':cate_id,'cate_order':cate_order},function(data){
+        var params = {'_token':'{{ csrf_token() }}','cate_id':cate_id,'cate_order':cate_order};
+       $.post("{{ url('admin/cate/changeorder') }}",params,function(data){
             alert(data.msg)
        }) 
     }
