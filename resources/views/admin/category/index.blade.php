@@ -114,7 +114,12 @@
         var cate_order = $(obj).val();
         var params = {'_token':'{{ csrf_token() }}','cate_id':cate_id,'cate_order':cate_order};
        $.post("{{ url('admin/cate/changeorder') }}",params,function(data){
-            alert(data.msg)
+            if (data.status == 0) {
+                layer.msg(data.msg, {icon:6})
+            }else{
+                layer.msg(data.msg, {icon:5})
+            }
+            
        }) 
     }
 </script>
