@@ -17,17 +17,20 @@ class CategoryController extends CommonController
     	return view('admin.category.index')->with('data',$categorys);
     }
     
-    //POST admin/category admin.category.store
+    
+    //GET admin/category/create  admin.category.create  添加分类
+    //添加分类
+    public function create()
+    {
+        return view('admin/category/add');
+    }
+
+    //POST admin/category admin.category.store 添加分类提交
     public function store()
     {
 
     }
-    //GET admin/category/create  admin.category.create
-    //添加分类
-    public function create()
-    {
-
-    }
+    
     //GET admin/category/{category}      | admin.category.show
     //显示单个分类
     public function show()
