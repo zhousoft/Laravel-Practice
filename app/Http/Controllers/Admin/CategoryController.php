@@ -22,15 +22,17 @@ class CategoryController extends CommonController
     //添加分类
     public function create()
     {
-        return view('admin/category/add');
+        $data = Category::where('cate_pid',0)->get();
+        return view('admin/category/add',compact('data'));
     }
 
     //POST admin/category admin.category.store 添加分类提交
     public function store()
     {
-
+        $input = Input::all();
+        dd($input);
     }
-    
+
     //GET admin/category/{category}      | admin.category.show
     //显示单个分类
     public function show()
