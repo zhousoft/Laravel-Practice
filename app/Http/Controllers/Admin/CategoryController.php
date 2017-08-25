@@ -37,7 +37,7 @@ class CategoryController extends CommonController
             $message = [
                 'cate_name.required'=>'分类名称不能为空'
             ];
-            //根据规则验证密码是否为空
+            //根据规则验证分类名称是否为空
             $validator = Validator::make($input,$rules,$message);
             if($validator->passes()){
              $ret = Category::create($input);   
@@ -54,6 +54,43 @@ class CategoryController extends CommonController
             return view('admin.category');
         }
     }
+    //GET admin/category/{category}/edit | admin.category.edit
+    //编辑分类
+    public function edit($cate_id)
+    {
+        $field = Category::find($cate_id); 
+        $data = Category::where('cate_pid',0)->get(); 
+        return view('admin/category/edit',compact('field','data')); 
+    }
+
+    //PUT admin/category/{category}   | admin.category.update
+    //更新分类
+    public function update($cate_id)
+    {
+        if($input = Input::except('_token','_method')){ //_token只用来验证csrf，不需要保存
+            $rules = [
+                'cate_name'=>'required',
+            ];
+            $message = [
+                'cate_name.required'=>'分类名称不能为空'
+            ];
+            //根据规则验证分类名称是否为空
+            $validator = Validator::make($input,$rules,$message);
+            if($validator->passes()){
+             $ret = Category::where('cate_id',$cate_id)->update($input);  
+             if ($ret) {
+                 return redirect('admin/category');
+             }else{
+                return back()->with('errors',"数据更新失败，请稍后重试");
+             }
+            }else{
+                //验证不通过返回
+                return back()->withErrors($validator);
+            }
+        }else{
+            return view('admin.category');
+        }
+    }
 
     //GET admin/category/{category}      | admin.category.show
     //显示单个分类
@@ -61,24 +98,15 @@ class CategoryController extends CommonController
     {
 
     }
-    //PUT admin/category/{category}   | admin.category.update
-    //更新分类
-    public function update()
-    {
 
-    }
+    
     //DELETE admin/category/{category}  | admin.category.destroy
     //删除分类
     public function destory()
     {
 
     }
-    //GET admin/category/{category}/edit | admin.category.edit
-    //编辑分类
-    public function edit()
-    {
-
-    }
+    
 
     public function changeOrder()
     {
