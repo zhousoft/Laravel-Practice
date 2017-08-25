@@ -41,7 +41,11 @@ class CategoryController extends CommonController
             $validator = Validator::make($input,$rules,$message);
             if($validator->passes()){
              $ret = Category::create($input);   
-             dd($ret);
+             if ($ret) {
+                 return redirect('admin/category');
+             }else{
+                return back()->with('errors',"数据填充失败，请稍后重试");
+             }
             }else{
                 //验证不通过返回
                 return back()->withErrors($validator);
