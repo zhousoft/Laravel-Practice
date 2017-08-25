@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Category;
@@ -29,8 +30,25 @@ class CategoryController extends CommonController
     //POST admin/category admin.category.store 添加分类提交
     public function store()
     {
-        $input = Input::all();
-        dd($input);
+        if($input = Input::except('_token')){ //_token只用来验证csrf，不需要保存
+            $rules = [
+                'cate_name'=>'required',
+            ];
+            $message = [
+                'cate_name.required'=>'分类名称不能为空'
+            ];
+            //根据规则验证密码是否为空
+            $validator = Validator::make($input,$rules,$message);
+            if($validator->passes()){
+             $ret = Category::create($input);   
+             dd($ret);
+            }else{
+                //验证不通过返回
+                return back()->withErrors($validator);
+            }
+        }else{
+            return view('admin.category');
+        }
     }
 
     //GET admin/category/{category}      | admin.category.show
