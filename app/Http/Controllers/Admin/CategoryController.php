@@ -102,9 +102,21 @@ class CategoryController extends CommonController
     
     //DELETE admin/category/{category}  | admin.category.destroy
     //删除分类
-    public function destory()
+    public function destroy($cate_id)
     {
-
+        $ret = Category::where('cate_id',$cate_id)->delete();
+        if ($ret) {
+            $data = [
+                'status' => 0,
+                'msg' => '分类删除成功'
+            ];
+        }else{
+            $data = [
+                'status' => 1,
+                'msg' => '分类删除失败，请稍后重试'
+            ];
+        }
+        return $data;
     }
     
 

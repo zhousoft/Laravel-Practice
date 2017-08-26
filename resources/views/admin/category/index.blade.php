@@ -68,7 +68,7 @@
                         <td>{{ $v->cate_view}}</td>
                         <td>
                             <a href="{{ url('admin/category/'.$v->cate_id.'/edit') }}">修改</a>
-                            <a href="#">删除</a>
+                            <a href="javascript:;" onclick="delCate({{  $v->cate_id }})">删除</a>
                         </td>
                     </tr>
                     @endforeach
@@ -110,6 +110,7 @@
     <!--搜索结果页面 列表 结束-->
 
 <script type="text/javascript">
+    //改变排序
     function changeOrder(obj, cate_id){
         var cate_order = $(obj).val();
         var params = {'_token':'{{ csrf_token() }}','cate_id':cate_id,'cate_order':cate_order};
@@ -121,6 +122,24 @@
             }
             
        }) 
+    }
+    //删除分类确认
+    function delCate(cate_id){
+        layer.confirm('确定删除该分类吗?',{
+            btn:['确定','取消']
+    },function(){ //确定按钮
+        var params = {'_token':'{{ csrf_token() }}','_method':'delete'};
+        $.post("{{ url('admin/category/') }}/"+cate_id,params,function(data){
+                if (data.status == 0) {
+                    location.href = location.href; //刷新页面
+                    layer.msg(data.msg, {icon: 6});
+                }else{
+                    layer.msg(data.msg, {icon: 5});
+                }
+        })
+    },function(){ //取消按钮
+
+    });
     }
 </script>
 @endsection
