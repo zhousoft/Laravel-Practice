@@ -105,6 +105,7 @@ class CategoryController extends CommonController
     public function destroy($cate_id)
     {
         $ret = Category::where('cate_id',$cate_id)->delete();
+        Category::where('cate_pid',$cate_id)->update(['cate_pid' => 0])//删除父分类后，将其所有子分类的父分类指定为顶级分类
         if ($ret) {
             $data = [
                 'status' => 0,
