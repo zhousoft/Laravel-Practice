@@ -14,4 +14,12 @@ class ArticleController extends CommonController
     {
     	echo '全部文章';
     }
+
+    //GET admin/article/create  admin.article.add  添加文章
+    //添加文章
+    public function create()
+    {
+    	$data = [];
+        return view('admin.article.add', compact('data'));
+    }
 }
