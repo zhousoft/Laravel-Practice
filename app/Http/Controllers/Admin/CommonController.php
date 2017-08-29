@@ -8,5 +8,8 @@ use App\Http\Requests;
 
 class CommonController extends Controller
 {
-    
+    public function uploade()
+    {
+    	echo "预留上传接口";
+    }
 }
