@@ -53,5 +53,5 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['admin.log
     Route::resource('category', 'CategoryController');
 
     Route::resource('article', 'ArticleController');
-    Route::any('uploade','CommonController@uploade');
+    Route::any('upload','CommonController@upload');
 });
