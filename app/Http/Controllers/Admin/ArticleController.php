@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Model\Category;
 use App\Http\Model\Article;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 class ArticleController extends CommonController
 {
@@ -43,7 +44,7 @@ class ArticleController extends CommonController
             if($validator->passes()){
                 $ret = Article::create($input);
                 if ($ret) {
-                    return redirect('admin/artice');
+                    return redirect('admin/article');
                 }else{
                     return back()->with('errors','添加文章失败，稍后重试!');
                 }
