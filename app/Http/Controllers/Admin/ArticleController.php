@@ -15,7 +15,8 @@ class ArticleController extends CommonController
     //全部文章列表
     public function index()
     {
-    	echo '全部文章';
+        $data = Article::paginate(5);
+    	return view('admin.article.index',compact('data'));
     }
 
     //GET admin/article/create  admin.article.add  添加文章
