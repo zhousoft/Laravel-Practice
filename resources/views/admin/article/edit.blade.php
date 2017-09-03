@@ -35,7 +35,6 @@
     <!--结果集标题与导航组件 结束-->
     
     <div class="result_wrap">
-
         <form action="{{ url('admin/article/'.{{ $field->art_id }}) }}" method="post">
             <input type="hidden" name="_method" value="put">
             {{ csrf_field() }}
@@ -47,7 +46,7 @@
                             <select name="cate_id">
                                 @foreach ($data as $d)
                                    <option value="{{ $d->cate_id }}"
-                                   @if ({{ $field->cate_id == $d->cate_id }})
+                                   @if ( $field->cate_id == $d->cate_id )
                                         selected 
                                    @endif
                                    >{{ $d->_cate_name }}</option>
