@@ -35,7 +35,7 @@
     <!--结果集标题与导航组件 结束-->
     
     <div class="result_wrap">
-        <form action="{{ url('admin/article/'.{{ $field->art_id }}) }}" method="post">
+        <form action="{{ url('admin/article/'. $field->art_id ) }}" method="post">
             <input type="hidden" name="_method" value="put">
             {{ csrf_field() }}
             <table class="add_tab">
@@ -46,9 +46,8 @@
                             <select name="cate_id">
                                 @foreach ($data as $d)
                                    <option value="{{ $d->cate_id }}"
-                                   @if ( $field->cate_id == $d->cate_id )
-                                        selected 
-                                   @endif
+                                @if($field->cate_id==$d->cate_id) selected @endif
+
                                    >{{ $d->_cate_name }}</option>
                                 @endforeach
                             </select>
@@ -104,7 +103,7 @@
                     <tr>
                         <th></th>
                         <td>
-                            <img  alt="" id="art_thumb_img" style="max-width: 350px; max-height:100px;" src="/{{ !!$field->art_thumb!! }}">
+                            <img  alt="" id="art_thumb_img" style="max-width: 350px; max-height:100px;" src="/{{ $field->art_thumb }}">
                         </td>
                     </tr>
                     <tr>
@@ -128,7 +127,7 @@
                             <!--建议手动加载语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
                             <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
                             <script type="text/javascript" charset="utf-8" src="{{ asset('resources/ext/ueditor/lang/zh-cn/zh-cn.js')}}"></script>
-                            <script id="editor" name ="art_content" type="text/plain" style="width:860px;height:500px;">{{ $field->art_content }}</script>
+                            <script id="editor" name ="art_content" type="text/plain" style="width:860px;height:500px;">{!! $field->art_content !!}</script>
                             <script type="text/javascript">
 
                             //实例化编辑器
