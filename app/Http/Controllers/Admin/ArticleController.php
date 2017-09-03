@@ -62,7 +62,8 @@ class ArticleController extends CommonController
     public function edit($art_id)
     {
         $data = (new Category)->tree();
-        return view('admin.article.edit',compact('data')); 
+        $field = Article::find($art_id);
+        return view('admin.article.edit',compact('data','field')); 
     }    
 }
 
