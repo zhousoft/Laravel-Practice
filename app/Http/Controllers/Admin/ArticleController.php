@@ -40,7 +40,7 @@ class ArticleController extends CommonController
                 'art_title.required' => '文章标题不能为空',
                 'art_content.required' => '文章内容不能为空',
             ];
-            //根据规则验证分类名称是否为空
+            //根据规则验证对应项是否为空
             $validator = Validator::make($input,$rules,$message);
             if($validator->passes()){
                 $ret = Article::create($input);
@@ -58,12 +58,43 @@ class ArticleController extends CommonController
     }
 
     //GET admin/article/{article}/edit | admin.article.edit
-    //编辑分类
+    //编辑文章
     public function edit($art_id)
     {
         $data = (new Category)->tree();
         $field = Article::find($art_id);
         return view('admin.article.edit',compact('data','field')); 
+    }
+
+    //PUT admin/article/{article}   | admin.article.update
+    //更新文章
+    public function update($art_id)
+    {
+        if($input = Input::except('_token','_method')){ //_token只用来验证csrf，不需要保存
+            $rules = [
+                'art_title'=>'required',
+                'art_content'=>'required',
+            ];
+            $message = [
+                'art_title.required' => '文章标题不能为空',
+                'art_content.required' => '文章内容不能为空',
+            ];
+            //根据规则验证对应项是否为空
+            $validator = Validator::make($input,$rules,$message);
+            if($validator->passes()){
+             $ret = Article::where('art_id',$art_id)->update($input);  
+             if ($ret) {
+                 return redirect('admin/article');
+             }else{
+                return back()->with('errors',"文章更新失败，请稍后重试");
+             }
+            }else{
+                //验证不通过返回
+                return back()->withErrors($validator);
+            }
+        }else{
+            return view('admin.article');
+        }
     }    
 }
 
