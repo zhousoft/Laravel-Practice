@@ -56,5 +56,13 @@ class ArticleController extends CommonController
         }
             
     }
+
+    //GET admin/article/{article}/edit | admin.article.edit
+    //编辑分类
+    public function edit($art_id)
+    {
+        $data = (new Category)->tree();
+        return view('admin.article.edit',compact('data')); 
+    }    
 }
 
