@@ -49,8 +49,10 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['admin.log
     Route::any('pass','IndexController@pass');
 
     Route::post('cate/changeorder','CategoryController@changeOrder');
-
     Route::resource('category', 'CategoryController');
+
+    Route::post('links/changeorder', 'LinksController@changeOrder');
+    Route::resource('links', 'LinksController');
 
     Route::resource('article', 'ArticleController');
     Route::any('upload','CommonController@upload');
