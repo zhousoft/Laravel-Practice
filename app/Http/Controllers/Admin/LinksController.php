@@ -25,7 +25,7 @@ class LinksController extends Controller
         $links = Links::find($input['link_id']);
         $links->link_order = $input['link_order'];
         $ret = $links->update();
-        if($ret;){
+        if($ret){
             $data = [
                 'status' => 0,
                 'msg' => '友情链接排序更新成功！',
@@ -72,7 +72,6 @@ class LinksController extends Controller
             return back()->withErrors($validator);
         }
     }
- 
 
 
     //get.admin/links/{link}  显示单个友情链接信息
