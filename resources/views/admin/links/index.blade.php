@@ -72,6 +72,28 @@
         });
     }
 
+    function delLinks(link_id){
+        layer.confirm('确定删除该连接吗?',{
+            btn:['确定','取消']
+        },function(){
+            $data = {
+                '_token':'{{ csrf_token() }}',
+                '_method':'delete'
+            }       
+            $.post("{{ url('admin/links/') }}/" + link_id, $data, function(data){
+                if (data.status == 0) {
+                    location.href = location.href;
+                    layer.msg(data.msg, {icon: 6});
+                } else {
+                    layer.msg(data.msg, {icon: 5});
+                }
+            });
+        },function(){
+
+        });
+        
+    }
+
 
 
 

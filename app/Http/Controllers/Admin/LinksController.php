@@ -91,6 +91,23 @@ class LinksController extends Controller
         }
     }
 
+    //delete.admin/links/{links}   删除友情链接
+    public function destroy($link_id)
+    {
+        $ret = Links::where('link_id',$link_id)->delete();
+        if($ret){
+            $data = [
+                'status' => 0,
+                'msg' => '友情链接删除成功！',
+            ];
+        }else{
+            $data = [
+                'status' => 1,
+                'msg' => '友情链接删除失败，请稍后重试！',
+            ];
+        }
+        return $data;
+    }
 
     //get.admin/links/{link}  显示单个友情链接信息
     public function show()
