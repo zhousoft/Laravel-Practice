@@ -72,6 +72,24 @@ class LinksController extends Controller
             return back()->withErrors($validator);
         }
     }
+    //get.admin/links/{links}/edit  编辑友情链接
+    public function edit($link_id)
+    {
+        $field = Links::find($link_id);
+        return view('admin.links.edit',compact('field'));
+    }
+
+    //put.admin/links/{links}    更新友情链接
+    public function update($link_id)
+    {
+        $input = Input::except('_token','_method');
+        $ret = Links::where('link_id',$link_id)->update($input);
+        if($ret){
+            return redirect('admin/links');
+        }else{
+            return back()->with('errors','友情链接更新失败，请稍后重试！');
+        }
+    }
 
 
     //get.admin/links/{link}  显示单个友情链接信息
