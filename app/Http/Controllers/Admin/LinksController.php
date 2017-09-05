@@ -24,8 +24,8 @@ class LinksController extends Controller
         $input = Input::all();
         $links = Links::find($input['link_id']);
         $links->link_order = $input['link_order'];
-        $re = $links->update();
-        if($re){
+        $ret = $links->update();
+        if($ret;){
             $data = [
                 'status' => 0,
                 'msg' => '友情链接排序更新成功！',
@@ -62,8 +62,8 @@ class LinksController extends Controller
         $validator = Validator::make($input,$rules,$message);
 
         if($validator->passes()){
-            $re = Links::create($input);
-            if($re){
+            $ret = Links::create($input);
+            if($ret){
                 return redirect('admin/links');
             }else{
                 return back()->with('errors','友情链接失败，请稍后重试！');
