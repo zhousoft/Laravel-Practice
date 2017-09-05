@@ -39,6 +39,39 @@ class LinksController extends Controller
         return $data;
     }
 
+    //get.admin/links/create   添加友情链接
+    public function create()
+    {
+        return view('admin/links/add');
+    }
+
+    //post.admin/links  添加友情链接提交
+    public function store()
+    {
+        $input = Input::except('_token');
+        $rules = [
+            'link_name'=>'required',
+            'link_url'=>'required',
+        ];
+
+        $message = [
+            'link_name.required'=>'友情链接名称不能为空！',
+            'link_url.required'=>'友情链接URL不能为空！',
+        ];
+
+        $validator = Validator::make($input,$rules,$message);
+
+        if($validator->passes()){
+            $re = Links::create($input);
+            if($re){
+                return redirect('admin/links');
+            }else{
+                return back()->with('errors','友情链接失败，请稍后重试！');
+            }
+        }else{
+            return back()->withErrors($validator);
+        }
+    }
  
 
 
