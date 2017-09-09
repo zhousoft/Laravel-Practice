@@ -57,4 +57,23 @@ class NavsController extends Controller
             return back()->withErrors($validator);
         }
     }
+
+    //get.admin/navs/{navs}/edit  编辑自定义导航
+    public function edit($nav_id)
+    {
+        $field = Navs::find($nav_id);
+        return view('admin.navs.edit',compact('field'));
+    }
+
+    //put.admin/navs/{navs}    更新自定义导航
+    public function update($nav_id)
+    {
+        $input = Input::except('_token','_method');
+        $ret = Navs::where('nav_id',$nav_id)->update($input);
+        if($ret){
+            return redirect('admin/navs');
+        }else{
+            return back()->with('errors','自定义导航更新失败，请稍后重试！');
+        }
+    }
 }
