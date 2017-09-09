@@ -48,7 +48,7 @@
                     <td>{{$v->nav_url}}</td>
                     <td>
                         <a href="{{url('admin/navs/'.$v->nav_id.'/edit')}}">修改</a>
-                        <a href="javascript:;" onclick="delLinks({{$v->nav_id}})">删除</a>
+                        <a href="javascript:;" onclick="delNavs({{$v->nav_id}})">删除</a>
                     </td>
                 </tr>
                 @endforeach
@@ -72,11 +72,15 @@
     }
 
     //删除自定义导航
-    function delLinks(nav_id) {
+    function delNavs(nav_id) {
         layer.confirm('您确定要删除这个导航吗？', {
             btn: ['确定','取消'] //按钮
         }, function(){
-            $.post("{{url('admin/navs/')}}/"+nav_id,{'_method':'delete','_token':"{{csrf_token()}}"},function (data) {
+        	$data = {
+                '_token':'{{ csrf_token() }}',
+                '_method':'delete'
+            }
+            $.post("{{url('admin/navs/')}}/"+nav_id,$data,function (data) {
                 if(data.status==0){
                     location.href = location.href;
                     layer.msg(data.msg, {icon: 6});
@@ -84,7 +88,6 @@
                     layer.msg(data.msg, {icon: 5});
                 }
             });
-//            layer.msg('的确很重要', {icon: 1});
         }, function(){
 
         });

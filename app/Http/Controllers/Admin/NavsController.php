@@ -76,4 +76,22 @@ class NavsController extends Controller
             return back()->with('errors','自定义导航更新失败，请稍后重试！');
         }
     }
+
+     //delete.admin/navs/{navs}   删除自定义导航
+    public function destroy($nav_id)
+    {
+        $re = Navs::where('nav_id',$nav_id)->delete();
+        if($re){
+            $data = [
+                'status' => 0,
+                'msg' => '自定义导航删除成功！',
+            ];
+        }else{
+            $data = [
+                'status' => 1,
+                'msg' => '自定义导航删除失败，请稍后重试！',
+            ];
+        }
+        return $data;
+    }
 }
