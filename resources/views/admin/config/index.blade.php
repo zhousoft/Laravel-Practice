@@ -64,6 +64,7 @@
         var conf_order = $(obj).val();
         $.post("{{url('admin/config/changeorder')}}",{'_token':'{{csrf_token()}}','conf_id':conf_id,'conf_order':conf_order},function(data){
             if(data.status == 0){
+                location.href = location.href; //刷新页面
                 layer.msg(data.msg, {icon: 6});
             }else{
                 layer.msg(data.msg, {icon: 5});
