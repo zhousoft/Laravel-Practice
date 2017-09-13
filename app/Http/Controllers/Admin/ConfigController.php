@@ -69,7 +69,7 @@ class ConfigController extends Controller
         foreach($input['conf_id'] as $k=>$v){
             Config::where('conf_id',$v)->update(['conf_content'=>$input['conf_content'][$k]]);
         }
-        return back()->with('errors','配置项更新成功！');
+        return back()->with('message','配置项更新成功！');
     }
 
     //get.admin/config/create   添加配置项

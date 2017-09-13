@@ -22,6 +22,12 @@
                     @endif
                 </div>
             @endif
+            
+            @if (session()->has('message'))
+                <div class="mark">
+                {{ session()->get('message')}}
+                </div>
+            @endif
         </div>
         <!--快捷配置项 开始-->
         <div class="result_content">
