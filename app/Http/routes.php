@@ -57,7 +57,6 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['admin.log
     Route::post('navs/changeorder', 'NavsController@changeOrder');
     Route::resource('navs', 'NavsController');
     
-    Route::get('config/putfile', 'ConfigController@putFile');
     Route::post('config/changecontent', 'ConfigController@changeContent');
     Route::post('config/changeorder', 'ConfigController@changeOrder');
     Route::resource('config', 'ConfigController');

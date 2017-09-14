@@ -127,7 +127,7 @@ class ConfigController extends Controller
         }
     }
 
-     public function putFile()
+     private function putFile()
     {
         $config = Config::pluck('conf_content','conf_name')->all();
         $path = base_path().'/config/web.php';
