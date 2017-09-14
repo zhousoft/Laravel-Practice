@@ -69,6 +69,7 @@ class ConfigController extends Controller
         foreach($input['conf_id'] as $k=>$v){
             Config::where('conf_id',$v)->update(['conf_content'=>$input['conf_content'][$k]]);
         }
+        $this->putFile();
         return back()->with('message','配置项更新成功！');
     }
 
@@ -119,10 +120,19 @@ class ConfigController extends Controller
         $input = Input::except('_token','_method');
         $ret = Config::where('conf_id',$conf_id)->update($input);
         if($ret){
+            $this->putFile();
             return redirect('admin/config');
         }else{
             return back()->with('errors','配置项更新失败，请稍后重试！');
         }
+    }
+
+     public function putFile()
+    {
+        $config = Config::pluck('conf_content','conf_name')->all();
+        $path = base_path().'/config/web.php';
+        $str = '<?php return '.var_export($config,true).';';
+        file_put_contents($path,$str);
     }
 
     //delete.admin/config/{config}   删除配置项
@@ -130,6 +140,7 @@ class ConfigController extends Controller
     {
         $ret = Config::where('conf_id',$conf_id)->delete();
         if($ret){
+            $this->putFile();
             $data = [
                 'status' => 0,
                 'msg' => '配置项删除成功！',
