@@ -6,7 +6,7 @@
 <meta name="keywords" content="个人博客,后盾个人博客,个人博客模板,后盾" />
 <meta name="description" content="后盾个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
 <link href={{asset("resources/views/home/css/base.css")}} rel="stylesheet">
-<link href={{asset("resources/views/hone/css/style.css")}} rel="stylesheet">
+<link href={{asset("resources/views/home/css/style.css")}} rel="stylesheet">
 <!--[if lt IE 9]>
 <script src="js/modernizr.js"></script>
 <![endif]-->
