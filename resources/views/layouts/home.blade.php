@@ -1,27 +1,28 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style type="text/css">
-		.header{
-			height: 100px;
-			background-color: darkred
-		}
-		.middle{
-			height: 300px;
-			background-color: lightblue
-		}
-		.footer{
-			height: 100px;
-			background-color: yellowgreen
-		}
-	</style>
+    <meta charset="utf-8">
+    @yield('info')
+    <link href="{{asset('resources/views/home/css/base.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/views/home/css/index.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/views/home/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('resources/views/home/css/new.css')}}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{{asset('resources/views/home/js/modernizr.js')}}"></script>
+    <![endif]-->
 </head>
 <body>
-	<div class ="header"> 公共头部 </div>	
-	@yield('content')
-	<div class ="footer">公共底部</div>
+<header>
+    <div id="logo"><a href="{{url('/')}}"></a></div>
+    <nav class="topnav" id="topnav">
+        @foreach($navs as $k=>$v)<a href="{{$v->nav_url}}"><span>{{$v->nav_name}}</span><span class="en">{{$v->nav_alias}}</span></a>@endforeach
+    </nav>
+</header>
+
+@yield('content')
+
+<footer>
+    <p>Design by  <a href="http://www.miitbeian.gov.cn/" target="_blank">http://www.baidu.com</a> <a href="/">网站统计</a></p>
+</footer>
 </body>
 </html>
