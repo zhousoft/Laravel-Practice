@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 use App\Http\Model\Article;
 use App\Http\Model\Links;
+use App\Http\Model\Category;
 
 class IndexController extends CommonController
 {
@@ -26,9 +27,19 @@ class IndexController extends CommonController
         return view('home.index',compact('hot','new','pics','data','links'));
     }
 
-    public function cate()
+    public function cate($cate_id)
     {
-        return view('home.list');
+        //图文列表4篇（带分页）
+        $data = Article::where('cate_id',$cate_id)->orderBy('art_time','desc')->paginate(4);
+
+        //查看次数自增
+        Category::where('cate_id',$cate_id)->increment('cate_view');
+
+        //当前分类的子分类
+        $submenu = Category::where('cate_pid',$cate_id)->get();
+
+        $field = Category::find($cate_id);
+        return view('home.list',compact('field','data','submenu'));
     }
 
     public function article()
