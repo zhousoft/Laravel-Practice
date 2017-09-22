@@ -1,3 +1,3 @@
 # Laravel-Blog  
-a blog with laravel
+a blog with laravel, for practice
 
