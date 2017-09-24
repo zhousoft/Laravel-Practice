@@ -19,7 +19,9 @@
     </nav>
 </header>
 
-@yield('content')
+{{--  @yield('content')  --}}
+@section('content')
+@show
 
 <footer>
     <p>Design by  <a href="http://www.miitbeian.gov.cn/" target="_blank">http://www.baidu.com</a> <a href="/">网站统计</a></p>
