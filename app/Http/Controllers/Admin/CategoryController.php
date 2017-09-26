@@ -30,7 +30,7 @@ class CategoryController extends CommonController
     //POST admin/category admin.category.store 添加分类提交
     public function store()
     {
-        if($input = Input::except('_token')){ //_token只用来验证csrf，不需要保存
+        if ($input = Input::except('_token')) { //_token只用来验证csrf，不需要保存
             $rules = [
                 'cate_name'=>'required',
             ];
@@ -38,19 +38,19 @@ class CategoryController extends CommonController
                 'cate_name.required'=>'分类名称不能为空'
             ];
             //根据规则验证分类名称是否为空
-            $validator = Validator::make($input,$rules,$message);
-            if($validator->passes()){
-             $ret = Category::create($input);   
-             if ($ret) {
-                 return redirect('admin/category');
-             }else{
-                return back()->with('errors',"数据填充失败，请稍后重试");
-             }
-            }else{
+            $validator = Validator::make($input, $rules, $message);
+            if ($validator->passes()) {
+                $ret = Category::create($input);   
+                if ($ret) {
+                    return redirect('admin/category');
+                } else {
+                    return back()->with('errors',"数据填充失败，请稍后重试");
+                }
+            } else {
                 //验证不通过返回
                 return back()->withErrors($validator);
             }
-        }else{
+        } else {
             return view('admin.category');
         }
     }
