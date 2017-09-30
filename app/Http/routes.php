@@ -11,29 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 Route::get('/', 'HomeController@index');
-// Route::get('/', function(){
-//     echo phpinfo();
-// });
-// Route::get('/view', function () {
-//     return view('my_laravel');
-// });
-// Route::get('view','ViewController@index');
 
-// Route::get('view','ViewController@view');
-
-// Route::get('article', 'ViewController@article');
-
-// Route::get('layouts', 'ViewController@layouts');
-
-// Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web','admin.login']], function(){
-//  Route::get('login','IndexController@login');
-//     Route::get('/', ['uses' => 'IndexController@index']);
-//    // Route::get('login/profile','IndexController@login')->name('profile');
-// });
 
 
 Route::group(
